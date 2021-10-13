@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Log In</title>
+	<!--    Logo-->
+    <link href="img/icon.png" rel="icon" type="image/css" />
+	
+	 <!--        fontawesome internal-->
+    <link href="../libs/fontawesomepro/css/all.min.css" rel="stylesheet" type="text/css">
+	<link href="css/login.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<div class="cotn_principal">
+   <div class="cont_centrar">
+	 <div class="cont_login">
+
+ <div class="cont_info_log_sign_up">
+		 <div class="col_md_login">
+			<div class="cont_ba_opcitiy"> 
+       			 <h2>LOGIN</h2>  
+  				 <p>Please enter your email & password</p> 
+ 				 <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+ 			</div>
+  		</div>
+	<div class="col_md_sign_up">
+		<div class="cont_ba_opcitiy">
+ 			 <h2>SIGN UP</h2>
+			 <p>Please register your information</p>
+			 <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
+		</div>
+   </div>
+ </div>
+  
+    <div class="cont_back_info">
+      <div class="cont_img_back_grey">
+        <img src="https://st.depositphotos.com/1000794/3773/i/950/depositphotos_37738913-stock-photo-money-in-the-sky.jpg" alt="" />
+      </div>
+    </div>
+
+<div class="cont_forms" >
+   <div class="cont_img_back_">
+     <img src="https://st.depositphotos.com/1000794/3773/i/950/depositphotos_37738913-stock-photo-money-in-the-sky.jpg" alt="" />
+   </div>
+
+ <div class="cont_form_login">
+	<a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons fad fa-times" style="width: 120%; height: 80%; color: red;"></i></a>
+   	<h2 style="color: lime;">LOGIN</h2>
+ 	<input type="text" placeholder="Email" />
+	<input type="password" placeholder="Password" />
+	<a href="forextrading.html"><button class="btn_login" onclick="cambiar_login()" style="transform: translateX(20%);">LOGIN</button></a>
+ </div>
+  
+  <div class="cont_form_sign_up">
+	<a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons fad fa-times" style="width: 120%; height: 80%; color: red;"></i></a>
+    <h2 style="color: lime;">SIGN UP</h2>
+	<input type="text" placeholder="Email" />
+	<input type="text" placeholder="User" />
+	<input type="password" placeholder="Password" />
+	<input type="password" placeholder="Confirm Password" />
+	<button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
+  </div>
+</div>   
+ 		 </div>
+ 	</div>
+</div>
+
+<script src="js/login.js" type="text/javascript"></script>
+</body>
+</html>

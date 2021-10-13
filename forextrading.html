@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Forex Trading</title>
+
+    <!--    Logo-->
+    <link href="img/icon.png" rel="icon" type="image/css" />
+
+    <!--        fontawesome internal-->
+    <link href="../libs/fontawesomepro/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
+    <link href="css/style.css" rel="stylesheet" >
+
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <!-- Chart Js -->
+     <script src="js/chart.js"></script>
+
+     <!-- loan calculator links -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/12.1.0/nouislider.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/12.1.0/nouislider.css" rel="stylesheet">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/12.1.0/nouislider.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/12.1.0/nouislider.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+ </head>
+<body>
+ <!-- <div class="all"> -->
+  <div class="sidebar">
+
+    <div class="logo-details">
+        <i class='bx bx-dollar icon'></i>
+        <div class="logo_name">Forex Trading</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+
+    <ul class="nav-list">
+
+      <li class="search"> 
+          <i class='bx bx-search' ></i>
+         <input type="text" placeholder="Search...">
+         <span class="tooltip">Search</span>
+      </li>
+
+     <li>
+       <a href="#chart">
+         <i class='bx bx-line-chart-down'></i>
+         <span class="links_name">Chart</span>
+       </a>
+       <span class="tooltip">Chart</span>
+     </li>
+
+     <li>
+       <a href="#loan">
+         <i class='bx bx-dollar-circle' ></i>
+         <span class="links_name">Loan Calculator</span>
+       </a>
+       <span class="tooltip">Loan Calculator</span>
+     </li>
+
+     <li>
+        <a href="#login">
+          <i class='bx bxs-lock-open'></i>
+          <span class="links_name">LogIn</span>
+        </a>
+         <span class="tooltip">LogIn</span>
+      </li>
+
+      <li>
+       <a href="#contact">
+         <i class='bx bxs-contact' ></i>
+         <span class="links_name">Contact</span>
+       </a>
+       <span class="tooltip">Contact</span>
+     </li>
+
+     <li>
+       <a href="#about">
+        <i class="fas fa-info-circle"></i>
+         <span class="links_name">About</span>
+       </a>
+       <span class="tooltip">About</span>
+     </li>
+     
+     <li>
+       <a href="#about">
+         <div  class="toggle"> <i class="fal fa-sun"></i> </div>
+         <span class="links_name">Dark & Light</span>
+       </a>
+       <span class="tooltip">D & L</span>
+     </li>
+
+     <li class="profile">
+         <div class="profile-details">
+           <img src="img/girl1.jfif" alt="profileImg">
+           <div class="name_job">
+             <div class="name">Mee</div>
+             <div class="job">WDF(3054)</div>
+           </div>
+         </div>
+         <i class='bx bx-log-out' id="log_out" ></i>
+     </li>
+    </ul>
+  </div>
+
+<!-- Start Home -->
+  <section>
+  <div id="top">
+    <p class="title">Welcome Forex Trading</p>
+  </div>
+  </section>
+<!-- End Home -->
+
+<!--Start Chart -->
+  <section class="home-section" id="chart">  
+  <p style="font-size: 30px; padding: 20px; margin-left: 40%; text-shadow: -5px -5px 6px #888; font-weight: 700;">Trading Chart</p> 
+    <p id="gbpusd"></p>
+    <div class="floatingTB">
+
+      <h3 id="traderMoney">$0</h3>
+      <div class="buttonSell" onclick="sell()">Sell</div>
+      <div class="buttonBuy" onclick="buy()">Buy</div>
+    </div>
+    <div id="fxChart" style = "width=100%; border: 1px solid lime;"></div>
+    <h1 id="yourtrades" style="transform: translateX(3%);">Your Trades:</h1>
+    <div id="openTrades"></div>
+    <h3 align="right">Total P/L: <span id="totalPL">NA</span></h3>
+    <div id="pleaseWait"><p align="center">Please wait...</p></div>
+  </section>
+<!-- End Chart -->
+
+<!-- Start Loan Calculator -->
+<section class="home-section loan" id="loan">
+  <p style="font-size: 30px; margin-left: 44%; transform: translateY(200%); text-shadow: -5px -5px 5px #333; font-weight: 700;">Loan Calculator</p> 
+  <div id="loan-container" >
+  <div id="info-pane" class="box-pane">
+    <div class="heading-title bold">Calculate Your Loan.</div>
+    <div class="row-input">
+      <label>How much would you like to borrow?</label>
+      <div class="input-wrap">
+        <div class="currency-code">$</div>
+        <input type="text" type="number" id="txtLoan" value=""/>
+      </div>
+    </div>
+
+    <div class="row-input">
+      <label>Loan interest rate?</label>
+      <div class="input-wrap">
+        <div class="percentage-code">%</div>
+        <input type="text" type="number" id="txtInterest" value="" maxlength="5" class="short-input"/>
+      </div>
+    </div>
+
+    <div class="row-input">
+      <label>How many years would you like the loan for?</label>
+      <div id="yearRange" class="range-slider"></div>
+    </div>
+
+    <div class="row-input">
+      <label>How often would you like to make payments?</label>
+      <ul class="ul-buttons">
+        <li class="selected" data-value="1">Monthly</li>
+        <li data-value="2">Fortnightly</li>
+        <li data-value="3">Weekly</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="graph-pane" class="box-pane">
+    <div id="repayment-total">
+      <div class="heading-title bold">Total interest</div>
+      <div id="repayment-total-value" class="loan-value">
+        $<span id="interest-total">0</span> over <span class="orange-text"><span id="year-value">5</span> years</span>
+      </div>
+    </div> 
+
+    <div id="repayment-cycle">
+      <div class="heading-title bold">Payment would be</div>
+      <div id="repayment-cycle-value" class="loan-value">
+        $<span id="repayment-value">0</span> per <span class="orange-text">fortnight</span>
+      </div>
+    </div> 
+    
+    <div class="clear"></div>
+    <div id="graph-chart"></div>
+  </div>
+</div>
+</section>
+<!-- End Loan Calculator -->
+
+<!-- Start Login -->
+<section class="home-section loan" id="login">
+    <div class="cotn_principal">
+   <div class="cont_centrar">
+   <div class="cont_login">
+
+ <div class="cont_info_log_sign_up">
+     <div class="col_md_login">
+      <div class="cont_ba_opcitiy"> 
+             <h2>LOGIN</h2>  
+           <p>Please enter your email & password</p> 
+         <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+      </div>
+      </div>
+  <div class="col_md_sign_up">
+    <div class="cont_ba_opcitiy">
+       <h2 >SIGN UP</h2>
+       <p>Please register your information</p>
+       <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
+    </div>
+   </div>
+ </div>
+  
+    <div class="cont_back_info">
+      <div class="cont_img_back_grey">
+        <img src="https://st.depositphotos.com/1000794/3773/i/950/depositphotos_37738913-stock-photo-money-in-the-sky.jpg" alt="" />
+      </div>
+    </div>
+
+<div class="cont_forms" >
+   <div class="cont_img_back_">
+     <img src="https://st.depositphotos.com/1000794/3773/i/950/depositphotos_37738913-stock-photo-money-in-the-sky.jpg" alt="" />
+   </div>
+
+ <div class="cont_form_login">
+  <a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons fad fa-times" style="width: 120%; height: 80%; color: red;"></i></a>
+    <h2 style="color: lime;">LOGIN</h2>
+  <input type="text" placeholder="Email" />
+  <input type="password" placeholder="Password" />
+  <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+ </div>
+  
+  <div class="cont_form_sign_up">
+  <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons fad fa-times" style="width: 120%; height: 80%; color: red;"></i></a>
+    <h2 style="color: lime;">SIGN UP</h2>
+  <input type="text" placeholder="Email" />
+  <input type="text" placeholder="User" />
+  <input type="password" placeholder="Password" />
+  <input type="password" placeholder="Confirm Password" />
+  <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
+  </div>
+</div>   
+     </div>
+  </div>
+</div>
+</section>
+<!-- End Login -->
+
+<!-- Start Contact -->
+  <section class="home-section loan" id="contact">
+    <div class="container">
+      <div class="form">
+        <div class="contact-info">
+          <h3 style="color: #069e2f;" >Let's get in touch</h3>
+          <p class="text"style="text-align: justify; font-size: 16px;">
+            Your questions & comments are important to us.
+            Select a topic below, or reach us by phone or email.
+            We've got everything covered for your needs.
+          </p>
+
+          <div class="info">
+            <div class="information">
+              <img src="img/location.svg" class="icon" alt="" />
+              <p>Chanmyatharsi Township, Mandalay</p>
+            </div>
+            <div class="information">
+              <img src="img/email.png" class="icon" alt="" />
+              <p>dangerbabysp@gmail.com</p>
+            </div>
+            <div class="information">
+              <img src="img/phone.png" class="icon" alt="" />
+              <p>+959770124611</p>
+            </div>
+          </div>
+
+          <div class="social-media">
+            <p>Connect with us :</p>
+            <div class="social-icons">
+              <a href="#">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <form action="" method="" autocomplete="off" >
+            <h3 class="contact">Contact us</h3>
+            <div class="input-container">
+              <input type="text" name="name" class="input" />
+              <label for="">Username</label>
+              <span>Username</span>
+            </div>
+            <div class="input-container">
+              <input type="email" name="email" class="input" />
+              <label for="">Email</label>
+              <span>Email</span>
+            </div>
+            <div class="input-container">
+              <input type="tel" name="phone" class="input" />
+              <label for="">Phone</label>
+              <span>Phone</span>
+            </div>
+            <div class="input-container textarea">
+              <textarea name="message" class="input"></textarea>
+              <label for="">Message</label>
+              <span>Message</span>
+            </div>
+            <input type="submit" value="Send" class="btn" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- End Contact -->
+
+<!-- Start About -->
+<section class="home-section loan" id="about">
+    <h1 class="heading"> <span>about</span> us </h1>
+    <div class="row">
+        <div class="image">
+            <img src="img/trading.webp" alt="">
+        </div>
+
+        <div class="content">
+            <h3>What is forex and how does it work?</h3>
+            <p>Forex, also known as foreign exchange or FX trading, is the conversion of one currency into another.It is one of the most actively traded markets in the world, with an average daily trading volume of $5 trillion.</p>
+            <p>As the world’s most-traded financial market, foreign exchange presents a wealth of opportunities for those who can harness its inherent volatility.</p>
+        </div>
+    </div>
+</section>
+<!-- End About -->
+  <script>
+ 
+    const toggle = document.querySelector('.toggle');
+    toggle.addEventListener('click',()=>{
+        toggle.classList.toggle('light');
+  
+        if(toggle.classList.contains('light')){
+             toggle.innerHTML = `<i class="far fa-moon-stars"></i>`;
+             lightfunction();
+      }else{
+          toggle.innerHTML = `<i class="fal fa-sun"></i>`;      
+          darkfunction();
+      }
+    });
+      
+
+    function lightfunction(){
+      document.querySelector('#chart').style.background = "#fff";
+      document.querySelector('#loan').style.background = "#fff";
+      document.querySelector('.cotn_principal').style.background = "#fff";
+      document.querySelector('.container').style.background = '#fff';
+      document.querySelector('#about').style.background = "#fff"; 
+    }
+
+    function darkfunction(){
+      document.querySelector('#chart').style.background = "#000";
+      document.querySelector('#loan').style.background = "#000";
+      document.querySelector('.cotn_principal').style.background = "#000";
+      document.querySelector('.container').style.background = '#000';
+      document.querySelector('#about').style.background = "#000";
+    }
+
+
+  // Start nav   
+  let sidebar = document.querySelector(".sidebar");
+  let closebtn = document.querySelector("#btn");
+  let searchbtn = document.querySelector(".bx-search");
+
+  closebtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("open");
+    menubtnchange();
+  });
+
+  searchbtn.addEventListener("click", ()=>{ 
+    sidebar.classList.toggle("open");
+    menubtnchange(); 
+  });
+
+  function menubtnchange() {
+   if(sidebar.classList.contains("open")){
+     closebtn.classList.replace("bx-menu", "bx-menu-alt-right");
+   }else {
+     closebtn.classList.replace("bx-menu-alt-right","bx-menu");
+   }
+  }
+  // End nav
+
+// Start Chart
+var screenH = window.innerHeight;
+      var screenW = window.innerWidth;
+      screenH -= 80;
+      document.getElementById("fxChart").style.height = screenH + "px";
+      var traderMoney = 0;
+      if(localStorage.getItem("traderMoney") === null){
+        localStorage.setItem("traderMoney", "1000.00");
+        traderMoney = 1000.00;
+      } else traderMoney = parseInt(localStorage.getItem("traderMoney"));
+      
+      var fxPrice = 1.29490;
+      var randomNumber;
+      var seconds = 1;
+      
+      var chart1 = new zkCharts("fxChart", screenH, 5);
+      chart1.initialize();
+      var chartData = [];
+      chartData.push({"y" : fxPrice});
+      
+      setInterval(function(){
+        refresh();
+      }, 1987);
+      
+      function refresh(){
+        document.getElementById("pleaseWait").style.display = "none";
+        randomNumber = Math.floor(Math.random() * 13); 
+        randomNumber /= 100000;
+        var randomFivty = Math.random();
+        if(randomFivty > 0.5) fxPrice += randomNumber;
+        else fxPrice -= randomNumber;
+        seconds += 1;
+        
+        chartData.push({"y" : fxPrice});
+        if(chartData.length > 313) chartData.splice(0, 1);
+        chart1.drawForexLineChart(chartData, 0, 5);
+        
+        //refresh trade list
+        if(myTrades.length > 0){
+          var tradeListText = "";
+          var totalPL = 0;
+          for(var i = 0; i < myTrades.length; i++){
+            var xTradeType = myTrades[i].type;
+            var xTradePrice = myTrades[i].price;
+            var pl, plSpan;
+            var display = "block";
+            if(xTradeType == "buy") pl = fxPrice - xTradePrice;
+            else if(xTradeType == "sell") pl = xTradePrice - fxPrice
+            else if(xTradeType == "closed"){
+              pl = 0;
+              display = "none";
+            }
+            if(pl < 0) plSpan = "<span style='color: red'>";
+            else plSpan = "<span style='color: lime'>";
+            pl *= 100000;
+            totalPL += pl;
+            var orderNumber = i+1;
+            tradeListText += "<p id=orderNumber"+i+" style='display: "+display+"'>#"+orderNumber+" Order type: "+myTrades[i].type+" at price: "+myTrades[i].price.toFixed(5)+" P/L: "+plSpan+"$"+pl.toFixed(2)+"</span> <span onclick='closeTrade("+i+")' style='float: right;'><img src='close.png' /></span></p>";
+          }
+          document.getElementById("openTrades").innerHTML = tradeListText;
+          if(totalPL != 0){
+            var newTraderMoney = traderMoney + totalPL;
+            localStorage.setItem("traderMoney", newTraderMoney.toString());
+          }else{
+            traderMoney = parseInt(localStorage.getItem("traderMoney"));
+          }
+          document.getElementById("traderMoney").innerHTML = "$" + (traderMoney + totalPL).toFixed(2);
+          document.getElementById("totalPL").innerHTML = "$" + totalPL.toFixed(2);
+        }else{
+          document.getElementById("traderMoney").innerHTML = "$" + traderMoney.toFixed(2);
+        }
+      }
+      
+      function trades(type, price){
+        this.type = type;
+        this.price = price;
+      }
+      
+      var tradeNumber = 0;
+      var myTrades = [];
+      function buy(){
+        myTrades[tradeNumber] = new trades("buy", fxPrice);
+        tradeNumber += 1;
+        document.getElementById("pleaseWait").style.display = "block";
+      }
+      function sell(){
+        myTrades[tradeNumber] = new trades("sell", fxPrice);
+        tradeNumber += 1;
+        document.getElementById("pleaseWait").style.display = "block";
+      }
+      function closeTrade(x){
+        document.getElementById("orderNumber"+x).style.display = "none";
+        myTrades[x].type = "closed";
+      }
+      document.getElementById("pleaseWait").style.top = ((innerHeight/2)-100) + "px";
+// End Chart
+  </script>
+
+  <script src="js/loancalculator.js" type="text/javascript"></script>
+  <script src="js/login.js" type="text/javascript"></script>
+  <script src="js/contact.js" type="text/javascript"></script>
+</body>
+</html>
